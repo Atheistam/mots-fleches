@@ -49,13 +49,14 @@
     }
     // taille des cases selon la largeur dispo
     const dispo = Math.min(window.innerWidth - 24, 920);
-    const taille = Math.max(26, Math.floor(dispo / data.cols) - 1);
+    const taille = Math.max(32, Math.floor(dispo / data.cols) - 1);
     document.documentElement.style.setProperty('--taille-case', taille + 'px');
     zoneGrille.style.gridTemplateColumns = `repeat(${data.cols}, var(--taille-case))`;
 
     rendu();
     chargeProgression();
     attacheClavier();
+    masterInit();
   }
 
   function rendu() {
@@ -83,9 +84,11 @@
         } else if (D) {
           div.className = 'case def';
           for (const d of D.defs) {
+            const w = motsParId.get(d.word);
+            if (!w) continue;
             const item = document.createElement('div');
             item.className = 'def-item';
-            item.innerHTML = `<span class="fleche">${d.arrow}</span>`;
+            item.innerHTML = `<span class="fleche">${d.arrow}</span><span class="texte">${w.def}</span>`;
             div.appendChild(item);
           }
           div.addEventListener('click', () => clicDef(k));
@@ -348,6 +351,7 @@
     chrono.t = 0;
     afficheChrono();
     rendu();
+    masterInit();
     sauvegarde();
   });
   $('btn-revoir').addEventListener('click', () => $('overlay').classList.add('cache'));
@@ -373,6 +377,53 @@
         const d = divCase(k);
         if (d) d.querySelector('.val').textContent = v;
       }
+      if (etat.m) console.log('master load'); // inert
+      masterUpdate();
     } catch (e) { /* ignore */ }
   }
+
+  /* ---------- mot maître ---------- */
+  let masterData = null; // {cells: [[r,c],...], word: '...'}
+  function masterInit() {
+    masterData = data.master || null;
+    const section = $('master-section');
+    const cont = $('master-lettres');
+    if (!masterData) { section.classList.add('cache'); return; }
+    section.classList.remove('cache');
+    cont.innerHTML = '';
+    masterData.word.split('').forEach((ch, i) => {
+      const slot = document.createElement('span');
+      slot.className = 'm-slot';
+      slot.dataset.idx = i;
+      slot.textContent = '?';
+      cont.appendChild(slot);
+    });
+    $('master-indice').textContent = `${masterData.word.length} lettres`;
+    masterUpdate();
+  }
+  function masterUpdate() {
+    if (!masterData) return;
+    const slots = $('master-lettres').children;
+    let complete = true;
+    masterData.cells.forEach(([r, c], i) => {
+      const v = saisies.get(`${r},${c}`) || '';
+      slots[i].textContent = v || '?';
+      slots[i].className = 'm-slot' + (v ? ' m-rempli' : '');
+      if (!v) complete = false;
+    });
+    if (complete) {
+      const mot = masterData.cells.map(([r, c]) => saisies.get(`${r},${c}`) || '').join('');
+      if (mot === masterData.word) {
+        $('master-lettres').className = 'master-lettres m-trouve';
+        $('master-indice').textContent = `✓ ${masterData.word}`;
+      }
+    }
+  }
+
+  // surcharge tapeLettre existante pour appeler masterUpdate
+  const _tapeLettre = tapeLettre;
+  tapeLettre = function(ch) {
+    _tapeLettre(ch);
+    masterUpdate();
+  };
 })();

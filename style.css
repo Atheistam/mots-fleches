@@ -154,6 +154,32 @@ body {
   80% { transform: translateX(4px); }
 }
 
+/* ---------- mot maître ---------- */
+.master-section {
+  max-width: 900px; margin: 0 auto 1rem;
+  padding: .8rem 1.2rem;
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: 8px; box-shadow: var(--ombre);
+  text-align: center;
+}
+.master-section.cache { display: none; }
+.master-label { font-size: .85rem; color: var(--encre-doux); margin-bottom: .4rem; font-variant: small-caps; letter-spacing: .08em; }
+.master-lettres { display: flex; gap: .4rem; justify-content: center; }
+.m-slot {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2.2rem;
+  font-size: 1.1rem; font-weight: 600; font-family: Verdana, sans-serif;
+  background: var(--fond);
+  border: 2px solid var(--bordure); border-radius: 4px;
+  color: var(--encre-doux);
+}
+.m-slot.m-rempli { color: var(--encre); border-color: var(--accent); background: var(--case-mot); }
+.master-lettres.m-trouve .m-slot { color: #2e6b2e; border-color: #2e6b2e; background: #e8f5e0; }
+.master-indice { font-size: .8rem; color: var(--encre-doux); margin-top: .3rem; }
+
+.case.def .texte { font-size: calc(var(--taille-case, 44px) * .22); }
+
 /* ---------- overlay victoire ---------- */
 .overlay {
   position: fixed; inset: 0;
