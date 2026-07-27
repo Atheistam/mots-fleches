@@ -1,0 +1,472 @@
+[
+ {
+  "id": "2026-07-27-m1",
+  "difficulty": "moyenne",
+  "words": [
+   {
+    "id": "H1",
+    "answer": "TRANSI"
+   },
+   {
+    "id": "H2",
+    "answer": "OGRES"
+   },
+   {
+    "id": "H3",
+    "answer": "OUT"
+   },
+   {
+    "id": "H4",
+    "answer": "AY"
+   },
+   {
+    "id": "H5",
+    "answer": "ANS"
+   },
+   {
+    "id": "H6",
+    "answer": "RUMEUR"
+   },
+   {
+    "id": "H7",
+    "answer": "EPICE"
+   },
+   {
+    "id": "H8",
+    "answer": "TORSION"
+   },
+   {
+    "id": "H9",
+    "answer": "AS"
+   },
+   {
+    "id": "H10",
+    "answer": "FINIES"
+   },
+   {
+    "id": "H11",
+    "answer": "NIAIS"
+   },
+   {
+    "id": "H12",
+    "answer": "LIES"
+   },
+   {
+    "id": "H13",
+    "answer": "MEDUSE"
+   },
+   {
+    "id": "H14",
+    "answer": "BLEU"
+   },
+   {
+    "id": "H15",
+    "answer": "TA"
+   },
+   {
+    "id": "H16",
+    "answer": "ISSU"
+   },
+   {
+    "id": "H17",
+    "answer": "ERRE"
+   },
+   {
+    "id": "H18",
+    "answer": "LOOSER"
+   },
+   {
+    "id": "H19",
+    "answer": "ESSENCE"
+   },
+   {
+    "id": "H20",
+    "answer": "TIRS"
+   },
+   {
+    "id": "V1",
+    "answer": "BROUTILLES"
+   },
+   {
+    "id": "V2",
+    "answer": "AUMONIERS"
+   },
+   {
+    "id": "V3",
+    "answer": "INTERIEURE"
+   },
+   {
+    "id": "V4",
+    "answer": "USES"
+   },
+   {
+    "id": "V5",
+    "answer": "EN"
+   },
+   {
+    "id": "V6",
+    "answer": "AI"
+   },
+   {
+    "id": "V7",
+    "answer": "RIS"
+   },
+   {
+    "id": "V8",
+    "answer": "MALE"
+   },
+   {
+    "id": "V9",
+    "answer": "DOYENNE"
+   },
+   {
+    "id": "V10",
+    "answer": "IDIOT"
+   },
+   {
+    "id": "V11",
+    "answer": "VRAI"
+   },
+   {
+    "id": "V12",
+    "answer": "AUSSI"
+   },
+   {
+    "id": "V13",
+    "answer": "ENCAISSER"
+   },
+   {
+    "id": "V14",
+    "answer": "ASSESSEURS"
+   }
+  ]
+ },
+ {
+  "id": "2026-07-27-m2",
+  "difficulty": "moyenne",
+  "words": [
+   {
+    "id": "H1",
+    "answer": "FAVORI"
+   },
+   {
+    "id": "H2",
+    "answer": "OVALE"
+   },
+   {
+    "id": "H3",
+    "answer": "NAN"
+   },
+   {
+    "id": "H4",
+    "answer": "EPI"
+   },
+   {
+    "id": "H5",
+    "answer": "ON"
+   },
+   {
+    "id": "H6",
+    "answer": "RAPT"
+   },
+   {
+    "id": "H7",
+    "answer": "CI"
+   },
+   {
+    "id": "H8",
+    "answer": "DAYA"
+   },
+   {
+    "id": "H9",
+    "answer": "GORGEON"
+   },
+   {
+    "id": "H10",
+    "answer": "SAC"
+   },
+   {
+    "id": "H11",
+    "answer": "SERIE"
+   },
+   {
+    "id": "H12",
+    "answer": "NI"
+   },
+   {
+    "id": "H13",
+    "answer": "LA"
+   },
+   {
+    "id": "H14",
+    "answer": "MITAN"
+   },
+   {
+    "id": "H15",
+    "answer": "BUTIN"
+   },
+   {
+    "id": "H16",
+    "answer": "DES"
+   },
+   {
+    "id": "H17",
+    "answer": "NU"
+   },
+   {
+    "id": "H18",
+    "answer": "TEST"
+   },
+   {
+    "id": "H19",
+    "answer": "NETTETE"
+   },
+   {
+    "id": "H20",
+    "answer": "AME"
+   },
+   {
+    "id": "H21",
+    "answer": "STRASSE"
+   },
+   {
+    "id": "H22",
+    "answer": "AMES"
+   },
+   {
+    "id": "V1",
+    "answer": "MANAGEMENT"
+   },
+   {
+    "id": "V2",
+    "answer": "VAPORISER"
+   },
+   {
+    "id": "V3",
+    "answer": "CONTRIT"
+   },
+   {
+    "id": "V4",
+    "answer": "TA"
+   },
+   {
+    "id": "V5",
+    "answer": "GEANTS"
+   },
+   {
+    "id": "V6",
+    "answer": "NIECE"
+   },
+   {
+    "id": "V7",
+    "answer": "NUES"
+   },
+   {
+    "id": "V8",
+    "answer": "PION"
+   },
+   {
+    "id": "V9",
+    "answer": "TE"
+   },
+   {
+    "id": "V10",
+    "answer": "FOI"
+   },
+   {
+    "id": "V11",
+    "answer": "NIB"
+   },
+   {
+    "id": "V12",
+    "answer": "UT"
+   },
+   {
+    "id": "V13",
+    "answer": "RA"
+   },
+   {
+    "id": "V14",
+    "answer": "AS"
+   },
+   {
+    "id": "V15",
+    "answer": "TEAM"
+   },
+   {
+    "id": "V16",
+    "answer": "LOYALISME"
+   },
+   {
+    "id": "V17",
+    "answer": "MENACANTES"
+   }
+  ]
+ },
+ {
+  "id": "2026-07-27-d1",
+  "difficulty": "difficile",
+  "words": [
+   {
+    "id": "H1",
+    "answer": "OEDIPE"
+   },
+   {
+    "id": "H2",
+    "answer": "AGORA"
+   },
+   {
+    "id": "H3",
+    "answer": "PEAU"
+   },
+   {
+    "id": "H4",
+    "answer": "EZ"
+   },
+   {
+    "id": "H5",
+    "answer": "TER"
+   },
+   {
+    "id": "H6",
+    "answer": "DUC"
+   },
+   {
+    "id": "H7",
+    "answer": "RU"
+   },
+   {
+    "id": "H8",
+    "answer": "OMEGA"
+   },
+   {
+    "id": "H9",
+    "answer": "COUSSIN"
+   },
+   {
+    "id": "H10",
+    "answer": "IL"
+   },
+   {
+    "id": "H11",
+    "answer": "TELL"
+   },
+   {
+    "id": "H12",
+    "answer": "EN"
+   },
+   {
+    "id": "H13",
+    "answer": "POOL"
+   },
+   {
+    "id": "H14",
+    "answer": "LOCO"
+   },
+   {
+    "id": "H15",
+    "answer": "DIURNE"
+   },
+   {
+    "id": "H16",
+    "answer": "CARE"
+   },
+   {
+    "id": "H17",
+    "answer": "COM"
+   },
+   {
+    "id": "H18",
+    "answer": "GAL"
+   },
+   {
+    "id": "H19",
+    "answer": "GERME"
+   },
+   {
+    "id": "H20",
+    "answer": "BOULE"
+   },
+   {
+    "id": "H21",
+    "answer": "PESEE"
+   },
+   {
+    "id": "H22",
+    "answer": "FUSEES"
+   },
+   {
+    "id": "V1",
+    "answer": "DEPUCELAGE"
+   },
+   {
+    "id": "V2",
+    "answer": "DECOLORES"
+   },
+   {
+    "id": "V3",
+    "answer": "RIA"
+   },
+   {
+    "id": "V4",
+    "answer": "ULCERE"
+   },
+   {
+    "id": "V5",
+    "answer": "PURS"
+   },
+   {
+    "id": "V6",
+    "answer": "ME"
+   },
+   {
+    "id": "V7",
+    "answer": "JE"
+   },
+   {
+    "id": "V8",
+    "answer": "USE"
+   },
+   {
+    "id": "V9",
+    "answer": "CE"
+   },
+   {
+    "id": "V10",
+    "answer": "INDO"
+   },
+   {
+    "id": "V11",
+    "answer": "GAZON"
+   },
+   {
+    "id": "V12",
+    "answer": "IMBU"
+   },
+   {
+    "id": "V13",
+    "answer": "PU"
+   },
+   {
+    "id": "V14",
+    "answer": "OS"
+   },
+   {
+    "id": "V15",
+    "answer": "POTE"
+   },
+   {
+    "id": "V16",
+    "answer": "ORGUE"
+   },
+   {
+    "id": "V17",
+    "answer": "REGIONALE"
+   },
+   {
+    "id": "V18",
+    "answer": "PARALLELES"
+   }
+  ]
+ }
+]
