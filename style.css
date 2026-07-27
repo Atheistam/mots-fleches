@@ -117,11 +117,16 @@ body {
   overflow: hidden;
 }
 .case.def .def-item {
-  display: flex; align-items: center; gap: 0;
+  display: flex; align-items: baseline; gap: 2px;
   width: 100%; line-height: 1.05;
+}
+.case.def .fleche {
+  font-size: 8px; color: #d9b64f; flex-shrink: 0;
+  line-height: 1;
 }
 .case.def .texte {
   font-size: 9px;
+  flex: 1; min-width: 0;
   line-height: 1.05;
   overflow: hidden;
   white-space: nowrap;
@@ -176,6 +181,27 @@ body {
 .m-slot.m-rempli { color: var(--encre); border-color: var(--accent); background: var(--case-mot); }
 .master-lettres.m-trouve .m-slot { color: #2e6b2e; border-color: #2e6b2e; background: #e8f5e0; }
 .master-indice { font-size: .8rem; color: var(--encre-doux); margin-top: .3rem; }
+
+/* ---------- panneau définitions ---------- */
+.defs-panel {
+  max-width: 900px; margin: 1.5rem auto;
+  padding: 1rem 1.4rem;
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: 8px; box-shadow: var(--ombre);
+  display: flex; gap: 2rem; flex-wrap: wrap;
+}
+.defs-titre { width: 100%; font-size: 1.1rem; margin-bottom: .5rem; font-variant: small-caps; }
+.defs-colonne { flex: 1; min-width: 280px; }
+.defs-colonne h3 { font-size: .9rem; color: var(--accent); margin-bottom: .4rem; }
+.def-ligne {
+  padding: .3rem .5rem; border-radius: 4px; cursor: pointer;
+  font-size: .9rem; line-height: 1.4;
+}
+.def-ligne:hover { background: var(--case-mot); }
+.def-ligne.active { background: var(--case-active); outline: 1px solid var(--accent); }
+.d-arrow { color: var(--accent); font-weight: bold; }
+.d-mot { font-weight: 600; font-variant: small-caps; }
 
 /* ---------- overlay victoire ---------- */
 .overlay {

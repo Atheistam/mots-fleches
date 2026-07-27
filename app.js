@@ -53,40 +53,48 @@
     zoneGrille.style.gridTemplateColumns = `repeat(${data.cols}, var(--taille-case))`;
 
     rendu();
-    calculTailles();
-    positionFleches();
+    populerDefs();
     chargeProgression();
     attacheClavier();
     masterInit();
-    window.addEventListener('resize', () => { calculTailles(); positionFleches(); });
+    window.addEventListener('resize', () => { /* stable */ });
   }
 
-  function positionFleches() {
-    const grid = document.querySelector('.grille');
-    const layer = grid?.querySelector('.def-arrows-overlay');
-    if (!grid || !layer) return;
-    layer.innerHTML = '';
-    const gridRect = grid.getBoundingClientRect();
-    document.querySelectorAll('.case.def').forEach(cell => {
-      const D = defs.get(cell.dataset.k);
-      if (!D || !D.defs.length) return;
-      const rect = cell.getBoundingClientRect();
-      D.defs.forEach((d, i) => {
-        const a = document.createElement('span');
-        a.className = 'fleche-grille';
-        a.textContent = d.arrow;
-        a.style.cssText = `position:absolute;color:#d9b64f;font-size:10px;line-height:1;pointer-events:none;
-          left:${rect.left - gridRect.left - 8}px;top:${rect.top - gridRect.top + i * 12 - 8}px;`;
-        layer.appendChild(a);
+  function populerDefs() {
+    const horiz = $('defs-horiz'), vert = $('defs-vert');
+    horiz.innerHTML = '<h3>Horizontal</h3>';
+    vert.innerHTML = '<h3>Vertical</h3>';
+    data.words.forEach(w => {
+      const ligne = document.createElement('div');
+      ligne.className = 'def-ligne';
+      ligne.id = 'def-row-' + w.id;
+      ligne.innerHTML = `<span class="d-arrow">${w.arrow}</span> <span class="d-mot">${w.answer}</span> — <span>${w.def}</span>`;
+      ligne.addEventListener('click', () => {
+        selectWord(w);
+        focusSaisie();
       });
+      (w.dir === 'right' ? horiz : vert).appendChild(ligne);
     });
+  }
+
+  function highlightDefRow(id) {
+    document.querySelectorAll('.def-ligne.active').forEach(l => l.classList.remove('active'));
+    if (!id) return;
+    const row = document.getElementById('def-row-' + id);
+    if (row) { row.classList.add('active'); row.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+  }
+
+  function selectWord(w) {
+    sel = { motId: w.id, pos: 0 };
+    afficheSelection();
+    highlightDefRow(w.id);
   }
 
   function calculTailles() {
     const cell = document.querySelector('.case.def');
     if (!cell) return;
     const largeurCell = parseInt(getComputedStyle(cell).width) || 60;
-    const largeurTexte = largeurCell - 10; // padding gauche 8 + droite 2
+    const largeurTexte = largeurCell - 18; // padding 10 + fleche 6 + gap 2
     document.querySelectorAll('.case.def .texte').forEach(t => {
       const ow = t.style.overflow;
       t.style.overflow = 'visible';
@@ -94,7 +102,7 @@
       const sw = t.scrollWidth;
       t.style.overflow = ow;
       if (sw > largeurTexte) {
-        t.style.fontSize = Math.max(5, 9 * largeurTexte / sw) + 'px';
+        t.style.fontSize = Math.max(5.5, 9 * largeurTexte / sw) + 'px';
       }
     });
   }
@@ -115,11 +123,6 @@
 
   function rendu() {
     zoneGrille.innerHTML = '';
-    // conteneur pour les flèches hors-cellules
-    const flechesLayer = document.createElement('div');
-    flechesLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:10;';
-    flechesLayer.className = 'def-arrows-overlay';
-    zoneGrille.appendChild(flechesLayer);
     for (let r = 0; r < data.rows; r++) {
       for (let c = 0; c < data.cols; c++) {
         const k = `${r},${c}`;
@@ -147,11 +150,10 @@
             if (!w) continue;
             const item = document.createElement('div');
             item.className = 'def-item';
-            const txt = document.createElement('span');
-            txt.className = 'texte';
-            txt.textContent = w.def;
-            txt.title = w.def;
-            item.appendChild(txt);
+            const arrow = document.createElement('span');
+            arrow.className = 'fleche';
+            arrow.textContent = d.arrow;
+            item.appendChild(arrow);
             div.appendChild(item);
           }
           div.addEventListener('click', () => clicDef(k));
@@ -216,8 +218,9 @@
       d.classList.remove('active', 'dans-mot');
     });
     zoneGrille.querySelectorAll('.case.def').forEach(d => d.classList.remove('surbrillance'));
-    if (!sel) { barreDef.textContent = 'Cliquez sur une case pour commencer.'; barreFleche.textContent = ''; return; }
+    if (!sel) { barreDef.textContent = 'Cliquez sur une case pour commencer.'; barreFleche.textContent = ''; highlightDefRow(null); return; }
     const w = motsParId.get(sel.motId);
+    highlightDefRow(w.id);
     for (let i = 0; i < w.answer.length; i++) {
       const d = divCase(caseDuMot(w, i));
       if (d) d.classList.add(i === sel.index ? 'active' : 'dans-mot');
