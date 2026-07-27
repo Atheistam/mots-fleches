@@ -121,12 +121,6 @@ body {
   color: #d9b64f;
   flex-shrink: 0;
 }
-.case.def .texte {
-  font-size: 8px;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  max-width: calc(var(--taille-case, 44px) * 1.8);
-  line-height: 1.2;
-}
 .case.def.surbrillance { outline: 2px solid #d9b64f; outline-offset: -2px; }
 .case.vide { background: var(--encre); cursor: default; }
 .case .num {
