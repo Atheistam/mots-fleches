@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grille — Mots Fléchés du Jour</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="jeu">
+<header class="jeu-header">
+  <a class="retour" href="index.html">← Grilles</a>
+  <div class="titre-grille">
+    <h1 id="titre">Mots fléchés</h1>
+    <span id="difficulte" class="badge"></span>
+  </div>
+  <div class="chrono" id="chrono">00:00</div>
+</header>
+
+<div class="def-active" id="def-active">
+  <span class="fleche" id="def-fleche"></span>
+  <span id="def-texte">Cliquez sur une case pour commencer.</span>
+</div>
+
+<main class="zone-jeu">
+  <div id="grille" class="grille" role="grid" aria-label="Grille de mots fléchés"></div>
+</main>
+
+<div class="actions">
+  <button id="btn-verifier" class="btn">Vérifier</button>
+  <button id="btn-effacer" class="btn secondaire">Effacer</button>
+  <button id="btn-recommencer" class="btn secondaire">Recommencer</button>
+</div>
+
+<div id="overlay" class="overlay cache">
+  <div class="overlay-carte">
+    <div id="overlay-titre" class="overlay-titre">Bravo !</div>
+    <div id="overlay-detail" class="overlay-detail"></div>
+    <canvas id="confettis" width="400" height="200"></canvas>
+    <div class="overlay-actions">
+      <a href="index.html" class="btn">Retour aux grilles</a>
+      <button id="btn-revoir" class="btn secondaire">Revoir la grille</button>
+    </div>
+  </div>
+</div>
+
+<input id="saisie-cachee" class="saisie-cachee" autocomplete="off" autocapitalize="characters" aria-hidden="true">
+<script src="app.js"></script>
+</body>
+</html>

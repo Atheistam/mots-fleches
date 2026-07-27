@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mots Fléchés du Jour</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+<header>
+  <h1>Mots Fléchés du Jour</h1>
+  <p class="date" id="date-du-jour"></p>
+</header>
+<main>
+  <section id="liste-grilles" class="liste-grilles"></section>
+  <p class="note">Nouvelles grilles chaque jour. Votre progression est conservée sur cet appareil.</p>
+</main>
+<footer>
+  <p>Grilles générées automatiquement — prototype.</p>
+</footer>
+<script>
+const JOURS = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+
+function dateLisible(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  return `${JOURS[dt.getDay()]} ${d} ${MOIS[m - 1]} ${y}`;
+}
+
+fetch('grilles/_index.json')
+  .then(r => r.json())
+  .then(idx => {
+    document.getElementById('date-du-jour').textContent = dateLisible(idx.date);
+    const cont = document.getElementById('liste-grilles');
+    const jour = document.createElement('div');
+    jour.className = 'jour';
+    jour.innerHTML = `<h2>${dateLisible(idx.date)}</h2>`;
+    const ul = document.createElement('div');
+    ul.className = 'liens';
+    for (const g of idx.grids) {
+      const resolue = localStorage.getItem('mf:' + g.id + ':win') === '1';
+      const a = document.createElement('a');
+      a.className = 'lien-grille' + (resolue ? ' resolue' : '');
+      a.href = `grille.html?g=${g.id}`;
+      a.innerHTML = `
+        <span class="badge ${g.difficulty}">${g.difficulty === 'moyenne' ? 'Moyenne' : 'Difficile'}</span>
+        <span class="etat">${resolue ? '✓ résolue' : 'à résoudre'}</span>`;
+      ul.appendChild(a);
+    }
+    jour.appendChild(ul);
+    cont.appendChild(jour);
+  })
+  .catch(() => {
+    document.getElementById('liste-grilles').innerHTML =
+      '<p class="erreur">Aucune grille disponible pour le moment.</p>';
+  });
+</script>
+</body>
+</html>
