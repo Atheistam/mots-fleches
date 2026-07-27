@@ -48,8 +48,7 @@
       }
     }
     // taille des cases selon la largeur dispo
-    const dispo = Math.min(window.innerWidth - 24, 920);
-    const taille = Math.max(32, Math.floor(dispo / data.cols) - 1);
+    const taille = 56;
     document.documentElement.style.setProperty('--taille-case', taille + 'px');
     zoneGrille.style.gridTemplateColumns = `repeat(${data.cols}, var(--taille-case))`;
 
@@ -83,16 +82,12 @@
           div.addEventListener('click', () => clicCase(k));
         } else if (D) {
           div.className = 'case def';
-          // infobulle avec les définitions
-          const tip = D.defs.map(d => {
-            const w = motsParId.get(d.word);
-            return w ? `${d.arrow} ${w.def}` : '';
-          }).filter(Boolean).join(' · ');
-          div.title = tip;
           for (const d of D.defs) {
+            const w = motsParId.get(d.word);
+            if (!w) continue;
             const item = document.createElement('div');
             item.className = 'def-item';
-            item.innerHTML = `<span class="fleche">${d.arrow}</span>`;
+            item.innerHTML = `<span class="fleche">${d.arrow}</span><span class="texte">${w.def}</span>`;
             div.appendChild(item);
           }
           div.addEventListener('click', () => clicDef(k));

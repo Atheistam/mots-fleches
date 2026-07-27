@@ -82,7 +82,7 @@ body {
   font-size: 1.15rem; line-height: 1.4;
 }
 .def-active .fleche { font-size: 1.5rem; color: var(--accent); flex-shrink: 0; }
-.zone-jeu { display: flex; justify-content: center; padding: 1.2rem 1rem; }
+.zone-jeu { display: flex; justify-content: center; padding: 1.2rem 1rem; overflow: auto; }
 .grille {
   display: grid; gap: 1px;
   background: var(--encre);
@@ -120,6 +120,12 @@ body {
   font-size: calc(var(--taille-case, 44px) * .30);
   color: #d9b64f;
   flex-shrink: 0;
+}
+.case.def .texte {
+  font-size: calc(var(--taille-case, 56px) * .16);
+  line-height: 1.15;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .case.def.surbrillance { outline: 2px solid #d9b64f; outline-offset: -2px; }
 .case.vide { background: var(--encre); cursor: default; }
