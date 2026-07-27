@@ -76,7 +76,7 @@
         a.className = 'fleche-grille';
         a.textContent = d.arrow;
         a.style.cssText = `position:absolute;color:#d9b64f;font-size:10px;line-height:1;pointer-events:none;
-          left:${rect.left - gridRect.left - 1}px;top:${rect.top - gridRect.top + i * 12 - 1}px;`;
+          left:${rect.left - gridRect.left - 8}px;top:${rect.top - gridRect.top + i * 12 - 8}px;`;
         layer.appendChild(a);
       });
     });
