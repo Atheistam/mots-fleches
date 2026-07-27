@@ -122,8 +122,8 @@ body {
   flex-shrink: 0;
 }
 .case.def .texte {
-  font-size: calc(var(--taille-case, 60px) * .14);
-  line-height: 1.1;
+  font-size: calc(var(--taille-case, 60px) * .11);
+  line-height: 1.05;
   overflow: hidden;
   white-space: nowrap;
 }
