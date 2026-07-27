@@ -28,7 +28,7 @@ function dateLisible(iso) {
   return `${JOURS[dt.getDay()]} ${d} ${MOIS[m - 1]} ${y}`;
 }
 
-fetch('grilles/_index.json')
+fetch('grilles/index.json')
   .then(r => r.json())
   .then(idx => {
     document.getElementById('date-du-jour').textContent = dateLisible(idx.date);
