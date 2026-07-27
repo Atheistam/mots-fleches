@@ -53,9 +53,42 @@
     zoneGrille.style.gridTemplateColumns = `repeat(${data.cols}, var(--taille-case))`;
 
     rendu();
+    calculTailles();
     chargeProgression();
     attacheClavier();
     masterInit();
+    window.addEventListener('resize', calculTailles);
+  }
+
+  function calculTailles() {
+    const cell = document.querySelector('.case.def');
+    if (!cell) return;
+    const largeurCell = parseInt(getComputedStyle(cell).width) || 60;
+    const largeurTexte = largeurCell - 10; // padding gauche 8 + droite 2
+    document.querySelectorAll('.case.def .texte').forEach(t => {
+      const ow = t.style.overflow;
+      t.style.overflow = 'visible';
+      t.style.fontSize = '9px';
+      const sw = t.scrollWidth;
+      t.style.overflow = ow;
+      if (sw > largeurTexte) {
+        t.style.fontSize = Math.max(5, 9 * largeurTexte / sw) + 'px';
+      }
+    });
+  }
+
+  function itemArrow(defs) {
+    const c = document.createElement('div');
+    c.style.cssText = 'position:absolute;top:0;left:0;z-index:2;';
+    c.className = 'def-arrows';
+    defs.forEach((d, i) => {
+      const a = document.createElement('span');
+      a.className = 'fleche';
+      a.style.top = (i * 12 + 1) + 'px';
+      a.textContent = d.arrow;
+      c.appendChild(a);
+    });
+    return c;
   }
 
   function rendu() {
@@ -82,6 +115,7 @@
           div.addEventListener('click', () => clicCase(k));
         } else if (D) {
           div.className = 'case def';
+          div.appendChild(itemArrow(D.defs));
           for (const d of D.defs) {
             const w = motsParId.get(d.word);
             if (!w) continue;
@@ -91,13 +125,6 @@
             txt.className = 'texte';
             txt.textContent = w.def;
             txt.title = w.def;
-            // taille police adaptative : +long → +petit
-            const len = w.def.length;
-            txt.style.fontSize = Math.min(9, Math.max(5, 9 - Math.floor((len - 8) / 4))) + 'px';
-            const arrow = document.createElement('span');
-            arrow.className = 'fleche';
-            arrow.textContent = d.arrow;
-            item.appendChild(arrow);
             item.appendChild(txt);
             div.appendChild(item);
           }
