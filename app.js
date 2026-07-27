@@ -54,10 +54,32 @@
 
     rendu();
     calculTailles();
+    positionFleches();
     chargeProgression();
     attacheClavier();
     masterInit();
-    window.addEventListener('resize', calculTailles);
+    window.addEventListener('resize', () => { calculTailles(); positionFleches(); });
+  }
+
+  function positionFleches() {
+    const grid = document.querySelector('.grille');
+    const layer = grid?.querySelector('.def-arrows-overlay');
+    if (!grid || !layer) return;
+    layer.innerHTML = '';
+    const gridRect = grid.getBoundingClientRect();
+    document.querySelectorAll('.case.def').forEach(cell => {
+      const D = defs.get(cell.dataset.k);
+      if (!D || !D.defs.length) return;
+      const rect = cell.getBoundingClientRect();
+      D.defs.forEach((d, i) => {
+        const a = document.createElement('span');
+        a.className = 'fleche-grille';
+        a.textContent = d.arrow;
+        a.style.cssText = `position:absolute;color:#d9b64f;font-size:10px;line-height:1;pointer-events:none;
+          left:${rect.left - gridRect.left - 1}px;top:${rect.top - gridRect.top + i * 12 - 1}px;`;
+        layer.appendChild(a);
+      });
+    });
   }
 
   function calculTailles() {
@@ -93,6 +115,11 @@
 
   function rendu() {
     zoneGrille.innerHTML = '';
+    // conteneur pour les flèches hors-cellules
+    const flechesLayer = document.createElement('div');
+    flechesLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:10;';
+    flechesLayer.className = 'def-arrows-overlay';
+    zoneGrille.appendChild(flechesLayer);
     for (let r = 0; r < data.rows; r++) {
       for (let c = 0; c < data.cols; c++) {
         const k = `${r},${c}`;
@@ -115,7 +142,6 @@
           div.addEventListener('click', () => clicCase(k));
         } else if (D) {
           div.className = 'case def';
-          div.appendChild(itemArrow(D.defs));
           for (const d of D.defs) {
             const w = motsParId.get(d.word);
             if (!w) continue;
