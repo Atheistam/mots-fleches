@@ -48,7 +48,7 @@
       }
     }
     // taille des cases selon la largeur dispo
-    const taille = 56;
+    const taille = 60;
     document.documentElement.style.setProperty('--taille-case', taille + 'px');
     zoneGrille.style.gridTemplateColumns = `repeat(${data.cols}, var(--taille-case))`;
 
