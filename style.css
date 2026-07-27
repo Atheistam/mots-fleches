@@ -178,7 +178,12 @@ body {
 .master-lettres.m-trouve .m-slot { color: #2e6b2e; border-color: #2e6b2e; background: #e8f5e0; }
 .master-indice { font-size: .8rem; color: var(--encre-doux); margin-top: .3rem; }
 
-.case.def .texte { font-size: calc(var(--taille-case, 44px) * .22); }
+.case.def .texte {
+  font-size: 8px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  max-width: calc(var(--taille-case, 44px) * 1.8);
+  line-height: 1.2;
+}
 
 /* ---------- overlay victoire ---------- */
 .overlay {
