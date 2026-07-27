@@ -87,7 +87,18 @@
             if (!w) continue;
             const item = document.createElement('div');
             item.className = 'def-item';
-            item.innerHTML = `<span class="fleche">${d.arrow}</span><span class="texte">${w.def}</span>`;
+            const txt = document.createElement('span');
+            txt.className = 'texte';
+            txt.textContent = w.def;
+            txt.title = w.def;
+            // taille police adaptative : +long → +petit
+            const len = w.def.length;
+            txt.style.fontSize = Math.min(9, Math.max(5, 9 - Math.floor((len - 8) / 4))) + 'px';
+            const arrow = document.createElement('span');
+            arrow.className = 'fleche';
+            arrow.textContent = d.arrow;
+            item.appendChild(arrow);
+            item.appendChild(txt);
             div.appendChild(item);
           }
           div.addEventListener('click', () => clicDef(k));
